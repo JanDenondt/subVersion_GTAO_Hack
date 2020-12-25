@@ -61,9 +61,9 @@ bool	D3D9Render::init(HWND hWnd)
 									&m_pVertexBuffer,		//vertex buffer interface
 									NULL);
 
-	this->createFont("Verdana", 14, true, false);
-	this->createFont("Verdana", 14, false, false);
-	this->createFont("Verdana", 18, true, false);
+	this->createFont((char*)"Verdana", 14, true, false);
+	this->createFont((char*)"Verdana", 14, false, false);
+	this->createFont((char*)"Verdana", 18, true, false);
 
 	m_pD3dDev->SetFVF(VERTEX_FORMAT);// select which vertex format to use
 

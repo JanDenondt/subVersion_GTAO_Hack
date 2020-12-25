@@ -273,7 +273,7 @@ void	hack::notWanted()
 
 void	hack::killNpc()
 {
-	if(m_dwpAttackerBase == 0)
+	/*if(m_dwpAttackerBase == 0)
 		return;
 	for(int i = 0; i < 3; i++)
 	{
@@ -286,7 +286,7 @@ void	hack::killNpc()
 		float v	= 0.f;
 		if(health > v)
 			g_pMemMan->writeMem<float>((DWORD_PTR) npc + OFFSET_ENTITY_HEALTH, &v);
-	}
+	}*/
 	return;
 }
 
@@ -481,13 +481,13 @@ void	hack::frameFlags(feat* featSuperJump, feat* featExplosiveMelee, feat* featF
 	DWORD dwValue	= 0;
 	m_player.getFrameFlags();
 	if(featSuperJump->m_bOn)
-		dwValue		|= 1 << 14;
+		dwValue		|= 1 << 64;
 	if(featExplosiveMelee->m_bOn)
-		dwValue		|= 1 << 13;
+		dwValue		|= 1 << 32;
 	if(featFireAmmo->m_bOn)
-		dwValue		|= 1 << 12;
+		dwValue		|= 1 << 16;
 	if(featExplosiveAmmo->m_bOn)
-		dwValue		|= 1 << 11;
+		dwValue		|= 1 << 8;
 	if(m_player.m_dwFrameFlags != dwValue)
 		m_player.setFrameFlags(dwValue);
 	return;

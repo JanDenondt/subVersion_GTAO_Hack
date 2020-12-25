@@ -46,7 +46,7 @@ int __stdcall WinMain(	HINSTANCE	hInstance,
 					LPSTR		lpCmdLine,
 					int			nCmdShow)
 {
-	if(FindWindow("sub1toOverlay", nullptr))	//make sure the hack is not already running
+	if(FindWindow("subVersion", nullptr))	//make sure the hack is not already running
 		exit(0);
 
 	g_pMemMan		= new memManager;
@@ -56,11 +56,11 @@ int __stdcall WinMain(	HINSTANCE	hInstance,
 
 	//LPCSTR	szWindowTitleTarget	= "Untitled - Notepad";
 	LPCSTR	szWindowTitleTarget	= "Grand Theft Auto V";
-	LPCSTR	szWindowTitle		= "subVersion 1.1.2 [unknowncheats]";
+	LPCSTR	szWindowTitle		= "subVersion Revive by Dura";
 	g_pMemMan->setWindowName(szWindowTitleTarget);
 	g_pD3D9Render->m_szWindowTitle = szWindowTitle;
 
-	g_pSettings->addFeatureCategory("Player");		//0
+	g_pSettings->addFeatureCategory("Self");		//0
 	g_pSettings->addFeatureCategory("Weapon");		//1
 	g_pSettings->addFeatureCategory("Vehicle");		//2
 	g_pSettings->addFeatureCategory("Teleport");	//3
@@ -73,10 +73,10 @@ int __stdcall WinMain(	HINSTANCE	hInstance,
 	g_iFeature[FEATURE_P_ANTINPC]			= g_pSettings->addFeature(0, -1, "Anti NPC", feat_toggle, "antiNpc");
 	g_iFeature[FEATURE_P_RUNSPD]			= g_pSettings->addFeature(0, -1, "Run Speed", feat_slider, "runSpd", 1.f, 5.f);
 	g_iFeature[FEATURE_P_SWIMSPD]			= g_pSettings->addFeature(0, -1, "Swim Speed", feat_slider, "swimSpd", 1.f, 5.f);
-	g_iFeature[FEATURE_P_SUPERJUMP]			= g_pSettings->addFeature(0, -1, "Super Jump", feat_toggle, "superJump");
-	g_iFeature[FEATURE_P_EXPLOSIVEMELEE]	= g_pSettings->addFeature(0, -1, "Explosive Melee", feat_toggle, "explMelee");
+	//g_iFeature[FEATURE_P_SUPERJUMP]			= g_pSettings->addFeature(0, -1, "Super Jump", feat_toggle, "superJump");
+	//g_iFeature[FEATURE_P_EXPLOSIVEMELEE]	= g_pSettings->addFeature(0, -1, "Explosive Melee", feat_toggle, "explMelee");
 	g_iFeature[FEATURE_P_NORAGDOLL]			= g_pSettings->addFeature(0, -1, "No Ragdoll", feat_toggle, "noRagdoll");
-	g_iFeature[FEATURE_P_STAMINA]			= g_pSettings->addFeature(0, -1, "Infinite Stamina", feat_toggle, "infStam");
+	//g_iFeature[FEATURE_P_STAMINA]			= g_pSettings->addFeature(0, -1, "Infinite Stamina", feat_toggle, "infStam");
 
 	g_iFeature[FEATURE_W_SPREAD]			= g_pSettings->addFeature(1, -1, "No Spread", feat_toggle, "noSpread");	
 	g_iFeature[FEATURE_W_RECOIL]			= g_pSettings->addFeature(1, -1, "No Recoil", feat_toggle, "noRecoil");	
@@ -85,9 +85,9 @@ int __stdcall WinMain(	HINSTANCE	hInstance,
 	g_iFeature[FEATURE_W_DAMAGE]			= g_pSettings->addFeature(1, -1, "Bullet Damage", feat_slider, "bulletDamage", 1.f, 10.f);
 	g_iFeature[FEATURE_W_AMMO]				= g_pSettings->addFeature(1, -1, "Infinite Ammo", feat_toggle, "infAmmo");
 	g_iFeature[FEATURE_W_RANGE]				= g_pSettings->addFeature(1, -1, "Range", feat_slider, "weapRange", 1.f, 10.f);
-	g_iFeature[FEATURE_W_SPINUP]			= g_pSettings->addFeature(1, -1, "No Spin-Up", feat_toggle, "weapSpin");
-	g_iFeature[FEATURE_W_EXPLOSIVEAMMO]		= g_pSettings->addFeature(1, -1, "Explosive Ammo", feat_toggle, "explAmmo");
-	g_iFeature[FEATURE_W_FIREAMMO]			= g_pSettings->addFeature(1, -1, "Fire Ammo", feat_toggle, "fireAmmo");
+	//g_iFeature[FEATURE_W_SPINUP]			= g_pSettings->addFeature(1, -1, "No Spin-Up", feat_toggle, "weapSpin");
+	//g_iFeature[FEATURE_W_EXPLOSIVEAMMO]		= g_pSettings->addFeature(1, -1, "Explosive Ammo", feat_toggle, "explAmmo");
+	//g_iFeature[FEATURE_W_FIREAMMO]			= g_pSettings->addFeature(1, -1, "Fire Ammo", feat_toggle, "fireAmmo");
 	g_iFeature[FEATURE_W_BULLET_BATCH]		= g_pSettings->addFeature(1, -1, "Bullet Batch", feat_slider, "bulletBatch", 1.f, 10.f, (float) 1.f / 9.f);
 	g_iFeature[FEATURE_W_BATCH_SPREAD]		= g_pSettings->addFeature(1, -1, "Batch Spread", feat_slider, "batchSpread", 0.f, 0.12f);
 	g_iFeature[FEATURE_W_MUZZLE_VELOCITY]	= g_pSettings->addFeature(1, -1, "Muzzle Velocity", feat_slider, "muzzleVelo", 1.f, 10.f);
@@ -106,8 +106,8 @@ int __stdcall WinMain(	HINSTANCE	hInstance,
 	//g_iFeature[FEATURE_V_DISABLE_DOORS]		= g_pSettings->addFeature(2, -1, "Disable Doors", feat_toggle, "vehDisableDoors");
 	g_iFeature[FEATURE_V_INF_CAR_ALARM]		= g_pSettings->addFeature(2, -1, "Infinite Alarm", feat_toggle, "vehInfAlarm");
 
-	g_pSettings->addFeature(3, -1, "Waypoint", feat_teleport, tp_waypoint);
-	g_pSettings->addFeature(3, -1, "Objective", feat_teleport, tp_objective);
+	//g_pSettings->addFeature(3, -1, "Waypoint", feat_teleport, tp_waypoint);
+	//g_pSettings->addFeature(3, -1, "Objective", feat_teleport, tp_objective);
 
 	int interior = g_pSettings->addFeature(3, -1, "Interiors >>", feat_parent);
 	g_pSettings->addFeature(-1, interior, "FIB Building Top", feat_teleport, tp_static, 136.0f, -750.f, 262.f);
@@ -151,11 +151,11 @@ int __stdcall WinMain(	HINSTANCE	hInstance,
 	wc.hIcon = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_ICON1));
 	wc.hIconSm = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_ICON1));
 	wc.hbrBackground = dynamic_cast<HBRUSH>(CreateSolidBrush(RGB(0, 0, 0)));//(HBRUSH)COLOR_WINDOW;
-	wc.lpszClassName = "sub1toOverlay";
+	wc.lpszClassName = "subVersion";
 
 	RegisterClassEx(&wc);
 	g_hWnd = CreateWindowEx(WS_EX_TOPMOST | WS_EX_TRANSPARENT | WS_EX_LAYERED,		//dwExStyle [in]
-							"sub1toOverlay",										//lpClassName [in, optional]
+							"subVersion",										//lpClassName [in, optional]
 							szWindowTitle,											//lpWindowName [in, optional]
 							WS_POPUP,												//dwStyle [in]
 							0,														//x [in]
@@ -280,7 +280,7 @@ DWORD __stdcall threadRender(LPVOID lpParam)
 
 DWORD __stdcall threadHack(LPVOID lpParam)
 {
-	g_pHack->m_hModule = g_pMemMan->getModuleAddress("GTA5.exe");
+	g_pHack->m_hModule = g_pMemMan->getModuleAddress((char*)"GTA5.exe");
 	while(!g_bKillSwitch)
 	{
 		BYTE btInit	= g_pHack->initPointers();
